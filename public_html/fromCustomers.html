@@ -1,0 +1,99 @@
+    <!-- Copy right by K M Ashfak Alam Siam -->
+    <!-- Html code for the Customer Query page -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head><title>Customer Query Form</title>
+   <meta charset="UTF-8">
+   <style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+    }
+
+    table {
+        margin: 0 auto;
+        background-color: #ffffff;
+        border-spacing: 0;
+        border-collapse: collapse;
+        width: 80%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 30px;
+    }
+
+    .title {
+        color: #2c3e50;
+        text-align: center;
+        font-size: 36px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .nav-links {
+        color: #3498db;
+        font-weight: 700;
+        text-decoration: none;
+        margin: 0 20px;
+        padding: 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    .nav-links:hover {
+        background-color: #ecf0f1;
+    }
+
+    .subtitle {
+        color: #555;
+        font-size: 18px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .content {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    img {
+        width: 100%;
+        max-width: 300px;
+        max-height: 300px; /* Set a maximum height for the image */
+        height: auto;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+</style>
+</head>
+
+<body>
+    <!-- Main content container using a table -->
+    <table>
+        <tr>
+            <td>
+                <!-- Application title and navigation link -->
+                <p class="title">An Customer Query Application</p>
+                <p class="nav-links"> 
+                    <a href="http://os1.csi.miamioh.edu/~siamk/CustomerQueryApplicationLinks.html">QueryPage</a>
+                </p>
+            </td>
+        </tr>
+    </table>
+    
+    <!-- Form for submitting customer queries based on country -->
+    <p></p> <!-- Adding an empty paragraph for spacing -->
+    <form action="./cgi-bin/customerByCoun.cgi" method="GET">
+        <p> Please Enter a Country Name: </p>
+        <!-- Input field for entering the country name -->
+        Country: <input type="text" name="country_text"> 
+        <!-- Submit button to trigger the form submission -->
+        <input type="submit" value="Submit" />
+    </form>
+</body>
+</html>

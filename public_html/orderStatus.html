@@ -1,0 +1,143 @@
+    <!-- Copy right by K M Ashfak Alam Siam -->
+        <!-- Html code for the order query page -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        table {
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-spacing: 0;
+            border-collapse: collapse;
+            width: 80%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .title {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .nav-links {
+            color: #3498db;
+            font-weight: 700;
+            text-decoration: none;
+            margin: 0 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links:hover {
+            background-color: #ecf0f1;
+        }
+
+        .subtitle {
+            color: #555;
+            font-size: 18px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .content {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        img {
+            width: 100%;
+            max-width: 300px;
+            max-height: 300px; /* Set a maximum height for the image */
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+        <!-- Main content container using a table -->
+
+    <table>
+        <tr>
+            <td>
+                <p class="title">A Order Query Application</p>
+                <p class="nav-links"> 
+                <a href="http://os1.csi.miamioh.edu/~siamk/CustomerQueryApplicationLinks.html"> QueryPage</a>
+                </p>
+
+            </td>
+        </tr>
+    </table>
+        <!-- Form for submitting order queries -->
+
+<p>You can run your query using the following options:</p>   
+<form id = "getAirportsForm" action = "./cgi-bin/orderStatus.cgi" method = "POST">
+   <fieldset>
+      <legend>Available Attributes</legend>
+      <input type = "radio" id="op1" name = "attr" value = "Shipped" /> Shipped
+      <input type = "radio" id="op2" name = "attr" value = "Cancelled" /> Cancelled
+      <input type = "radio" id="op2" name = "attr" value = "Resolved" /> Resolved
+      <input type = "radio" id="op2" name = "attr" value = "On Hold" /> ON Hold
+      <input type = "radio" id="op2" name = "attr" value = "Disputed" /> Disputed
+      <input type = "radio" id="op2" name = "attr" value = "In Process" /> In Process
+   </fieldset>
+   <p>Search text:</p> 
+
+   <input type = "submit" value = "Search" />
+   <p></p>
+
+</form>
+    <!-- Container for displaying query results -->
+
+<div id="resultTable"></div>
+
+    <!-- JavaScript script for handling form submission and updating results -->
+
+<script>
+   
+   document.getElementById("getAirportsForm").addEventListener("submit", function(event) {
+      console.log("Script loaded");
+            event.preventDefault(); // Prevent the default form submission
+
+            var attrValue = document.querySelector('input[name="attr"]:checked').value;
+            console.log(attrValue);
+            // Perform AJAX request or other method to get CGI script results
+            // For simplicity, assume a variable `result` contains the HTML table
+            var xhr = new XMLHttpRequest();
+            console.log("httprequest created");
+            var url = "./cgi-bin/orderStatus.cgi";
+            var params = "attr=" + encodeURIComponent(attrValue);
+            xhr.open("POST", url, true);
+
+            xhr.onreadystatechange = function () {
+             if (xhr.readyState == 4 && xhr.status == 200) {
+               // Update the resultTable div with the obtained HTML results
+               document.getElementById("resultTable").innerHTML = xhr.responseText;
+            }
+            };
+
+            xhr.send(params);
+            
+        });
+
+</script>
+</body>
+</html>
